@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Regestration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+            animation: colorChange 5s infinite alternate;
+        }
+
+
+        @keyframes colorChange {
+        0% {
+            background-color: rgb(255, 247, 15);
+        }
+
+        50% {
+            background-color: #ffffff;
+        }
+
+        100% {
+            background-color: rgb(255, 221, 0);
+        }
+    }
+
+    
+        .signup-form {
+            max-width: 45%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .form-group {
+            margin-bottom: 20px;
+        }
+    
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+    
+        input {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+    
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="signup-form">
+        <center><h1>Registration Form</h1></center>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            
+            <button type="submit" name="submit" id="sbt">Register</button>
+            <div class = "alr">
+                <h3>Already have account? <a href="{% url 'login' %}">Login</a></h3>
+            </div>
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </form>
+        
+    </div>
+    
+</body>
+
+</html>

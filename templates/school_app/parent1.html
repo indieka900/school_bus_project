@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url(yellow-background-design.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100vh;}
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <script>
+        function trackLocation() {
+            // Get the student name from the input field
+            var studentName = document.getElementById("studentName").value;
+
+            // TODO: Implement Google Maps API logic to track the location based on the student name
+            // Use the Google Maps API functions to retrieve and display the live location
+
+            // Example: Display an alert message with the student name
+            alert("Tracking " + studentName + "'s location.");
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName">
+    
+        <div class="button-container">
+            <a class="button" href="parent.track.html">Track location
+            </a>
+        </div>
+    </form>
+</body>
+</html>

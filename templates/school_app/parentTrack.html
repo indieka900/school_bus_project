@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url('/static/school_app/media/yellow-background-design.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100vh;}
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>School Bus Tracking</h1>
+    <div id="map"></div>
+    
+    <script src="script2.js"></script>
+    <script>
+        // Coordinates for the car's journey
+            const coordinates = [
+                { latitude: -1.286389, longitude: 36.817223 },  // Nairobi
+                { latitude: -0.091702, longitude: 34.761388 },  // Nakuru
+                { latitude: -0.102213, longitude: 34.761338 },  // Nakuru (simulate pause)
+                { latitude: -0.102403, longitude: 34.761361 },  // Nakuru (simulate pause)
+                { latitude: -0.092609, longitude: 34.761336 },  // Nakuru
+                { latitude: -0.091591, longitude: 34.761366 },  // Nakuru
+                { latitude: -0.067403, longitude: 34.739195 },  // Kericho
+                { latitude: -0.059989, longitude: 34.737214 },  // Kericho
+                { latitude: -0.057895, longitude: 34.737373 },  // Kericho
+                { latitude: -0.057313, longitude: 34.737365 },  // Kericho
+                { latitude: -0.039215, longitude: 34.741662 },  // Kisumu
+            ];
+
+            let currentPosition = 0;
+            let map;
+
+            function initMap() {
+                const center = { lat: coordinates[0].latitude, lng: coordinates[0].longitude };
+                map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 8,
+                    center: center,
+                });
+            }
+
+            function updateMap() {
+                const position = {
+                    lat: coordinates[currentPosition].latitude,
+                    lng: coordinates[currentPosition].longitude,
+                };
+                map.setCenter(position);
+                const marker = new google.maps.Marker({ position: position, map: map });
+
+                currentPosition++;
+                if (currentPosition >= coordinates.length) {
+                    clearInterval(trackingInterval);
+                }
+            }
+
+            // Load Google Maps API asynchronously
+            function loadScript() {
+                const script = document.createElement("script");
+                script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCN5j-XgsNTzJZlyakkMo2TOwkuMNn-YfA&callback=initMap`;
+                document.body.appendChild(script);
+            }
+
+            // Start tracking on page load
+            window.addEventListener("load", () => {
+                loadScript();
+                const trackingInterval = setInterval(updateMap, 2000); // Update every 2 seconds
+            });
+        
+    </script>
+</body>
+</html>

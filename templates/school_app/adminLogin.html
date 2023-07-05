@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+            animation: colorChange 5s infinite alternate;
+        }
+
+
+        @keyframes colorChange {
+        0% {
+            background-color: rgb(255, 247, 15);
+        }
+
+        50% {
+            background-color: #ffffff;
+        }
+
+        100% {
+            background-color: rgb(255, 221, 0);
+        }
+    }
+
+    
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .form-group {
+            margin-bottom: 20px;
+        }
+    
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+    
+        .login-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="container">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label>Username : </label>
+                <input type="text" placeholder="Enter Username" name="username" id="username" required>
+                
+            </div>
+            <div class="form-group">
+                <label>Password : </label>
+                <input type="password" placeholder="Enter Password" name="password" id="password" required>
+            </div>
+            <center><button class="login-btn" type="submit" name="submit">Login</button></center>
+            {% if messages %}
+            <script>
+                {% for message in messages %}
+                    alert("{{ message }}");
+                {% endfor %}
+            </script>
+            {% endif %}
+
+        </div>
+    </form>
+</body>
+</html>

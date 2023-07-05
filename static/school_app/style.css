@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.background{
+    background-image: url('/media/background.jpg');
+    width: 100%;
+    height: 100vh;
+    background-size:cover ;
+    background-repeat: no-repeat;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100;
+    padding: 20px 100px;
+    background: rgb(249, 231, 35);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 40;
+}
+.SCHOOL{
+    font-size: 2cm;
+    color: black;
+    user-select: none;
+    margin: 40px;
+}
+.navigation{
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    font-size: 1.1cm;
+    color: rgb(17, 213, 26);
+    text-decoration: none;
+    font-weight: 400;
+    margin-left: 60px;
+}

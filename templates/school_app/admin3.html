@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url(yellow-background-design.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100vh;
+        }
+        table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .update-form {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .update-form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .update-form input[type="text"] {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    .update-form input[type="button"] {
+      padding: 5px 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Bus Number</th>
+            <th>Driver Name</th>
+            <th>Contact Number</th>
+            <th>Edit</th>
+        </tr>
+        <tr>
+            <td>101</td>
+            <td id="bus-number-101">01</td>
+            <td id="driver-name-101">Tevin</td>
+            <td id="contact-number-101">0791984007</td>
+            <td><button onclick="displayUpdateForm(101)">Edit</button></td>
+        </tr>
+    </table>
+    
+    <div id="update-form-101" class="update-form">
+        <h3>Update Bus Details</h3>
+        <label for="update-bus-number-101">Bus Number:</label>
+        <input type="text" id="update-bus-number-101">
+    
+        <label for="update-driver-name-101">Driver Name:</label>
+        <input type="text" id="update-driver-name-101">
+    
+        <label for="update-contact-number-101">Contact Number:</label>
+        <input type="text" id="update-contact-number-101">
+    
+        <input type="button" value="Update" onclick="updateRow(101)">
+    </div>
+    
+    <script>
+        function displayUpdateForm(id) {
+            // Show the update form for the corresponding row
+            document.getElementById(`update-form-${id}`).style.display = 'block';
+
+            // Retrieve the current bus details
+            const busNumber = document.getElementById(`bus-number-${id}`).innerText;
+            const driverName = document.getElementById(`driver-name-${id}`).innerText;
+            const contactNumber = document.getElementById(`contact-number-${id}`).innerText;
+
+            // Populate the form fields with the current bus details
+            document.getElementById(`update-bus-number-${id}`).value = busNumber;
+            document.getElementById(`update-driver-name-${id}`).value = driverName;
+            document.getElementById(`update-contact-number-${id}`).value = contactNumber;
+        }
+
+        function updateRow(id) {
+            // Retrieve the updated bus details from the form
+            const updatedBusNumber = document.getElementById(`update-bus-number-${id}`).value;
+            const updatedDriverName = document.getElementById(`update-driver-name-${id}`).value;
+            const updatedContactNumber = document.getElementById(`update-contact-number-${id}`).value;
+
+            // Update the table with the new bus details
+            document.getElementById(`bus-number-${id}`).innerText = updatedBusNumber;
+            document.getElementById(`driver-name-${id}`).innerText = updatedDriverName;
+            document.getElementById(`contact-number-${id}`).innerText = updatedContactNumber;
+
+            // Hide the update form
+            document.getElementById(`update-form-${id}`).style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
