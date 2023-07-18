@@ -7,6 +7,7 @@ urlpatterns = [
     # Django admin
     path('admin/', admin.site.urls),
     # User management
+    path("accounts/", include("allauth.urls")),
     # local apps
     path('', include('school_app.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
