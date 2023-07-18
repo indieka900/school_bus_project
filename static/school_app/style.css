@@ -1,8 +1,15 @@
+body {
+    min-height: 75rem;
+    padding-top: 4.5rem;
+}
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 .background{
     background-image: url('/media/background.jpg');
     width: 100%;
