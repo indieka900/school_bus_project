@@ -8,7 +8,7 @@ class Student(models.Model):
 	updated = models.DateTimeField(auto_now = True)
 	joined = models.DateTimeField(auto_now_add=True, null=True)
 	Class = models.IntegerField()
-	parent_name = models.CharField(max_length=60)
+	parent_name = models.CharField(max_length=60, null=True)
 	parent_email = models.EmailField()
 	bus_number = models.CharField(max_length=10)
 	password = models.CharField(max_length=25,default='')
